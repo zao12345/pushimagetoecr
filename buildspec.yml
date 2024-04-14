@@ -5,18 +5,18 @@ phases:
     commands:
       - echo "Logging in to Amazon ECR..."
       - aws --version
-      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin public.ecr.aws
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 533267226679.dkr.ecr.us-east-1.amazonaws.com
   build:
     commands:
       - echo "Building Docker image..."
       - docker build -t assignment5 .
       - echo "Tagging Docker image..."
-      - docker tag assignment5 public.ecr.aws/t5k9x2g4/assignment5:ver1
+      - docker tag assignment5 533267226679.dkr.ecr.us-east-1.amazonaws.com/assignment5:ver1
   
   post_build:
     commands:
       - echo "Pushing Docker image to Amazon ECR..."
-      - docker push public.ecr.aws/t5k9x2g4/assignment5:ver1
+      - docker push 533267226679.dkr.ecr.us-east-1.amazonaws.com/assignment5:ver1
 
 artifacts:
   files: []
